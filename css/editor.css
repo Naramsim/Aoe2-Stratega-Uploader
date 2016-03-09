@@ -1,0 +1,63 @@
+body, html {
+	padding-top: 0.01em;
+	height: 100%;
+}
+
+body {
+	background: url(../img/houses.gif) no-repeat center center fixed;
+	-moz-background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+* {
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
+.container{
+	width:800px;
+	margin:0 auto;
+	height: 100%;
+	position: relative;
+}
+
+.container > .editor{
+    position:fixed;
+}
+
+.controls {
+	width: auto;
+}
+
+#fieldlist {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	text-align: center;
+}
+
+.demo-section:not(.wide), #exampleWrap .box:not(.wide) {
+    max-width: 500px;
+}
+
+.button {
+	padding: 8px 27px;
+}
+
+#fieldlist > li {
+	display: inline;
+	margin: 0 2em;
+}
+
+.editor {
+	bottom: 0;
+	width: 800px;
+	height: 70%;
+	box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.52), 0 3px 6px rgba(0, 0, 0, 0.55);
+	border-top: 20px solid #272822;
+}
+
+#ace {
+	height: 100%;
+}
