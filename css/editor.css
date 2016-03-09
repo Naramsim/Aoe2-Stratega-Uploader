@@ -9,10 +9,7 @@ body {
     -webkit-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-}
-
-* {
-	font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 .container{
@@ -48,6 +45,10 @@ body {
 #fieldlist > li {
 	display: inline;
 	margin: 0 2em;
+}
+
+#fieldlist label {
+	margin-right: 6px;
 }
 
 .editor {
