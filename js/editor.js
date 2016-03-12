@@ -36,4 +36,35 @@ document.addEventListener('DOMContentLoaded', function () {
     editor.getSession().setMode("ace/mode/lucene");
     editor.setValue(fc, -1);
     editor.setShowPrintMargin(false);
+
+    var submit = document.getElementById("submit-strategy");
+    submit.addEventListener("click", function() {
+        var name = DOMPurify.sanitize(document.getElementById("strategy_name").value);
+        var strategy_content = editor.getValue();
+        strategy_content = DOMPurify.sanitize(strategy_content);
+        strategy_content = strategy_content.replace(/"|'|`/g , "");
+        console.log(strategy_content);
+
+        var to_send = {
+            title: "",
+            content: ""
+        };
+
+        to_send.title = name;
+        to_send.content = strategy_content;
+        to_send = JSON.stringify(to_send);
+
+        var request = new XMLHttpRequest();
+        request.open('POST', 'http://localhost:3005/aoe2/strategies', true);
+        request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        request.onreadystatechange = function () { 
+            if (request.readyState == 4 && request.status == 201) {
+                var json = JSON.parse(request.responseText);
+                console.log(json);
+                //Notify.startToast(2000,"GOOD", "your strategy have been uploaded")
+            }
+        }
+        request.send(to_send);
+    });
 });
+
