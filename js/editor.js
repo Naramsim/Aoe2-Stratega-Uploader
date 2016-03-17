@@ -46,17 +46,17 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log(strategy_content);
 
         var to_send = {
-            title: "",
+            name: "",
             content: ""
         };
 
-        to_send.title = name;
+        to_send.name = name;
         to_send.content = strategy_content;
         to_send = JSON.stringify(to_send);
 
         var request = new XMLHttpRequest();
-        request.open('POST', 'http://localhost:3005/aoe2/strategies', true);
-        request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        request.open('POST', 'http://betterbin.co/aoe2/strategies', true);
+        request.setRequestHeader('Content-Type', 'text/plain; charset=UTF-8');
         request.onreadystatechange = function () { 
             if (request.readyState == 4 && request.status == 201) {
                 var json = JSON.parse(request.responseText);
