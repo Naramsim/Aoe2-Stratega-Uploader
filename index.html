@@ -10,6 +10,24 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
   </head>
   <body>
+    <script>
+      var toSay = "Ciao a tutti! Ci vediamo Lunedì, BABBIONI!     JAJAJAJJAJ";
+      var said = "";
+      
+      function insult(){
+      	if(!!toSay[0]){
+          setTimeout(function(){
+          	said+= toSay[0];
+      			window.location.hash = said;
+            toSay = toSay.substr(1);
+            console.log(said);
+            insult();
+          },170);
+        }
+      }
+      
+      insult();
+    </script>
     <section class="page-header">
       <h1 class="project-name">Aoe2-stratega-uploader</h1>
       <h2 class="project-tagline">Aoe2 uploader</h2>
