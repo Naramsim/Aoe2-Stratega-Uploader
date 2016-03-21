@@ -32,7 +32,26 @@ Icon: castle
 
 var re = new RegExp("^Str@(.*)[\r\n]*^Civ:?\s?(.*)[\r\n]*^Map:?\s?(.*)[\r\n]*Name:?\s?(.*)[\r\n]*Author:?\s?(.*)[\r\n]*^Icon:\s?(.*)", "m");
 
+getCookie = function(name) {
+  var value = "; " + document.cookie;
+  var parts = value.split("; " + name + "=");
+  if (parts.length === 2) {return parts.pop().split(";").shift();}
+};
+
+setCookie = function (argument) {
+    var s = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789£$&^";
+    var X = Array(9).join().split(',').map(function() { return s.charAt(Math.floor(Math.random() * s.length)); }).join('');
+    document.cookie = argument + '=' + X + '; expires=Fri, 3 Aug 2100 20:47:11 UTC; path=/';
+};
+
 document.addEventListener('DOMContentLoaded', function () {
+
+    if(getCookie("XDAB") !== undefined){
+        var XDAB = getCookie("XDAB");
+    }else{
+        setCookie("XDAB");
+    }
+
 	var editor = ace.edit("ace");
     editor.setTheme("ace/theme/monokai");
     editor.getSession().setMode("ace/mode/lucene");
@@ -50,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var strategy_content = editor.getValue();
         strategy_content = DOMPurify.sanitize(strategy_content);
         strategy_content = strategy_content.replace(/"|'|`/g , "");
-        match = /*re.match(strategy_content);*/strategy_content.match(re);
+        match = strategy_content.match(re);
         if(match !== null ){
             title_declared = match[4].trim();
             author = match[5].trim();
@@ -58,34 +77,36 @@ document.addEventListener('DOMContentLoaded', function () {
                 console.log("titles should be equals");
                 myToast.start("Titles should be equals", "ERROR");
             }else{
-                console.log("success " + author);
-                myToast.start("Your strategy has been uploaded", "SUCCESS");
+                var to_send = {
+                    name: "",
+                    content: "",
+                    xdab: "default"
+                };
+
+                to_send.name = name;
+                to_send.content = strategy_content;
+                XDAB === undefined ? XDAB = "default" : XDAB = XDAB;
+                to_send = JSON.stringify(to_send);
+                console.log(to_send);
+
+                var request = new XMLHttpRequest();
+                request.open('POST', 'http://localhost:3000/aoe/strategies', true);
+                request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+                request.onreadystatechange = function () { 
+                    if (request.readyState == 4 && request.status == 200) {
+                        var json = JSON.parse(request.responseText);
+                        console.log(json);
+                        myToast.start("Your strategy has been uploaded", "SUCCESS");
+                    }
+                }
+                request.send(to_send);
             }
         }else{
             console.log("invalid");
             myToast.start("Invalid pattern in your strategy", "ERROR");
         }
 
-        var to_send = {
-            name: "",
-            content: ""
-        };
-
-        to_send.name = name;
-        to_send.content = strategy_content;
-        to_send = JSON.stringify(to_send);
-
-        // var request = new XMLHttpRequest();
-        // request.open('POST', 'http://localhost:3000/aoe2/strategies', true);
-        // request.setRequestHeader('Content-Type', 'text/plain; charset=UTF-8');
-        // request.onreadystatechange = function () { 
-        //     if (request.readyState == 4 && request.status == 201) {
-        //         var json = JSON.parse(request.responseText);
-        //         console.log(json);
-        //         //Notify.startToast(2000,"GOOD", "your strategy have been uploaded")
-        //     }
-        // }
-        // request.send(to_send);
+        
     });
 });
 
