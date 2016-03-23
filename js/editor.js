@@ -44,6 +44,46 @@ setCookie = function (argument) {
     document.cookie = argument + '=' + X + '; expires=Fri, 3 Aug 2100 20:47:11 UTC; path=/';
 };
 
+function star(id){
+    var request = new XMLHttpRequest();
+    request.open('POST', 'http://localhost:3000/aoe/stars', true);
+    request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+    request.onreadystatechange = function () { 
+        if (request.readyState == 4 && request.status == 200) {
+            var json = JSON.parse(request.responseText);
+            console.log(json);
+        }
+    }
+    request.send(JSON.stringify({"id":id}));
+}
+
+function download(id){
+    var request = new XMLHttpRequest();
+    request.open('POST', 'http://localhost:3000/aoe/download', true);
+    request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+    request.onreadystatechange = function () { 
+        if (request.readyState == 4 && request.status == 200) {
+            var json = JSON.parse(request.responseText);
+            console.log(json);
+        }
+    }
+    request.send(JSON.stringify({"id":id}));
+}
+
+function _delete(id, xdab){
+    var request = new XMLHttpRequest();
+    request.open('POST', 'http://localhost:3000/aoe/delete', true);
+    request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+    request.onreadystatechange = function () { 
+        if (request.readyState == 4 && request.status == 200) {
+            var json = JSON.parse(request.responseText);
+            console.log(json);
+            myToast.start("Your strategy has been deleted", "SUCCESS");
+        }
+    }
+    request.send(JSON.stringify({"id":id, "xdab":xdab}));
+}
+
 document.addEventListener('DOMContentLoaded', function () {
 
     if(getCookie("XDAB") !== undefined){
