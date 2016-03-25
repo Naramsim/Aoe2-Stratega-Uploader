@@ -84,6 +84,19 @@ function _delete(id, xdab){
     request.send(JSON.stringify({"id":id, "xdab":xdab}));
 }
 
+function search(what){
+    var request = new XMLHttpRequest();
+    request.open('POST', 'http://localhost:3000/aoe/search', true);
+    request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+    request.onreadystatechange = function () { 
+        if (request.readyState == 4 && request.status == 200) {
+            var json = JSON.parse(request.responseText);
+            console.log(json);
+        }
+    }
+    request.send(JSON.stringify({"match":what}));
+}
+
 document.addEventListener('DOMContentLoaded', function () {
 
     if(getCookie("XDAB") !== undefined){
