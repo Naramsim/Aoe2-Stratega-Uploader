@@ -1,0 +1,21 @@
+body {
+	background: url(../img/houses.gif) no-repeat center center fixed;
+	-moz-background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+#ace{
+	height: 70vh;
+	border-top: 40px solid rgb(40,40,40);
+}
+
+.strategy_description {
+	height: 18vh;
+}
+
+.hidden {
+	display: none;
+}

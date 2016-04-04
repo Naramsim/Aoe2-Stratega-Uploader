@@ -1,0 +1,29 @@
+body, html {
+	padding-top: 0.01em;
+}
+
+body {
+	background: url(../img/houses.gif) no-repeat center center fixed;
+	-moz-background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+* {
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
+#exampleWrap {
+	margin:auto;
+	margin-top: 10vh;
+}
+
+#example {
+	max-width:95%;
+	margin: 0 auto;
+}
+
+.box {
+	background-color: rgba(255, 255, 255, 0.74);
+}

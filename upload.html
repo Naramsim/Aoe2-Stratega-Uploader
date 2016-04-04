@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Uploader</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="http://kendo.cdn.telerik.com/2016.1.226/styles/kendo.material.min.css">
+	<link rel="stylesheet" type="text/css" href="http://kendo.cdn.telerik.com/2016.1.226/styles/kendo.common-material.min.css">
+	<link rel="stylesheet" type="text/css" media="(max-width: 720px)" href="http://kendo.cdn.telerik.com/2016.1.226/styles/kendo.material.mobile.min.css">
+	<link rel="stylesheet" type="text/css" media href="http://demos.telerik.com/kendo-ui/content/shared/styles/examples.css">
+	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="css/uploader.css">
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://kendo.cdn.telerik.com/2016.1.226/js/kendo.all.min.js"></script>
+	<script type="text/javascript" src="js/uploader.js"></script>
+</head>
+<body>
+	<div id="exampleWrap">
+        <div id="example">
+            <div class="box">
+                <h4>Information</h4>
+                <p>
+                    The Upload can be used as a drop-in replacement
+                    for file input elements. This "synchronous" mode does not require
+                    special handling on the server.
+                </p>
+            </div>
+            <form method="post" action="/kendo-ui/upload/submit" enctype="multipart/form-data" encoding="multipart/form-data">
+                <div class="demo-section k-content">
+                    <div class="k-widget k-upload k-header k-upload-sync k-upload-empty"><div class="k-button k-upload-button"><input name="files" id="files" type="file" data-role="upload" multiple="multiple" autocomplete="off" accept=".gif"><span>Select files...</span></div></div>
+                    <p style="padding-top: 1em; text-align: right">
+                        <span class="k-button k-primary" id="submit-strategy">Submit</span>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
