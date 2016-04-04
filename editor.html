@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="App">
 <head>
 	<title>Editor</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="http://kendo.cdn.telerik.com/2016.1.226/styles/kendo.common-material.min.css">
 	<link rel="stylesheet" type="text/css" media="(max-width: 720px)" href="http://kendo.cdn.telerik.com/2016.1.226/styles/kendo.material.mobile.min.css">
 	<link rel="stylesheet" type="text/css" media href="http://demos.telerik.com/kendo-ui/content/shared/styles/examples.css">
+	<link rel="stylesheet" type="text/css" href="https://rawgit.com/balde73/creativeGo/Staging/css/creativeGo.css">
 	<link rel="stylesheet" type="text/css" href="css/editor.css">
 	<link rel="stylesheet" href="https://rawgit.com/Naramsim/Notify/master/dist/notify.min.css">
 	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600' rel='stylesheet' type='text/css'>
@@ -14,26 +15,40 @@
 	<script src="https://rawgit.com/Naramsim/Notify/master/dist/notify.min.js"></script>
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/ace/1.2.3/noconflict/ace.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/0.7.4/purify.min.js"></script>
+	<script src="https://code.angularjs.org/1.5.3/angular.min.js"></script>
+	<script type="text/javascript" src="js/images.js"></script>
 	<script type="text/javascript" src="js/editor.js"></script>
 </head>
-<body>
-	<div class="container">
-		<div class="controls">
-			<div class="demo-section k-content">
-                <ul id="fieldlist">
-                    <li>
-                        <label for="phone_number">Strategy Name</label>
-                        <input class="k-textbox" id="strategy_name" value="Fast Castle" />
-                    </li>
-                    <li>
-                        <button class="k-button k-primary button" id="submit-strategy">Submit</button>
-                    </li>
-                </ul>
-            </div>
+<body ng-controller="Images">
+	<div class="container all-height">
+		<div class="nav-side Bwhite has-nav-title">
+			<div class="nav-title Bblack">
+				<a href="">Images</a>
+			</div>
+			<ul class="nav-ul border-1 padd20" id="listView" >
+				<li ng-repeat="image in images">
+		      		{{image.name}} - <img src="{{image.src}}"></img>
+			    </li>
+			</ul>
 		</div>
-		<div class="editor">
-			<div id="ace"></div>
+		<div class="has-nav-side anchor all-height ovHidden">
+			<div class="controls">
+				<div class="demo-section k-content">
+	                <ul id="fieldlist">
+	                    <li>
+	                        <input class="k-textbox" id="strategy_name" value="" placeholder="Fast Castle" />
+	                    </li>
+	                    <li>
+	                        <button class="k-button k-primary button" id="submit-strategy">Submit</button>
+	                    </li>
+	                </ul>
+	            </div>
+			</div>
+			<div class="editor">
+				<div id="ace"></div>
+			</div>
 		</div>
+
 	</div>
 </body>
 </html>
