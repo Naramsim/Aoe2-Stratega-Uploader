@@ -46,7 +46,7 @@ setCookie = function (argument) {
 
 function star(id){
     var request = new XMLHttpRequest();
-    request.open('POST', 'http://localhost:3000/aoe/stars', true);
+    request.open('POST', 'betterbin.co/aoe/stars', true);
     request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
     request.onreadystatechange = function () { 
         if (request.readyState == 4 && request.status == 200) {
@@ -59,7 +59,7 @@ function star(id){
 
 function download(id){
     var request = new XMLHttpRequest();
-    request.open('POST', 'http://localhost:3000/aoe/download', true);
+    request.open('POST', 'betterbin.co/aoe/download', true);
     request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
     request.onreadystatechange = function () { 
         if (request.readyState == 4 && request.status == 200) {
@@ -72,7 +72,7 @@ function download(id){
 
 function _delete(id, xdab){
     var request = new XMLHttpRequest();
-    request.open('POST', 'http://localhost:3000/aoe/delete', true);
+    request.open('POST', 'betterbin.co/aoe/delete', true);
     request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
     request.onreadystatechange = function () { 
         if (request.readyState == 4 && request.status == 200) {
@@ -86,7 +86,7 @@ function _delete(id, xdab){
 
 function search(what){
     var request = new XMLHttpRequest();
-    request.open('POST', 'http://localhost:3000/aoe/search', true);
+    request.open('POST', 'betterbin.co/aoe/search', true);
     request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
     request.onreadystatechange = function () { 
         if (request.readyState == 4 && request.status == 200) {
@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 console.log(to_send);
 
                 var request = new XMLHttpRequest();
-                request.open('POST', 'http://localhost:3000/aoe/strategies', true);
+                request.open('POST', 'betterbin.co/aoe/strategies', true);
                 request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
                 request.onreadystatechange = function () { 
                     if (request.readyState == 4 && request.status == 200) {

@@ -11,3 +11,11 @@ body {
 	height: 70vh;
 	border-top: 40px solid rgb(40,40,40);
 }
+
+.strategy_description {
+	height: 18vh;
+}
+
+.hidden {
+	display: none;
+}
