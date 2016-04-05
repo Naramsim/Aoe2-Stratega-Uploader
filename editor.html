@@ -23,11 +23,17 @@
 	<div class="container all-height">
 		<div class="nav-side Bwhite has-nav-title">
 			<div class="nav-title Bblack">
-				<a href="">Images</a>
+				<div>
+					<a href="">Images</a>
+					<form class="form-inline">
+				      <input ng-model="query" type="text" class="inputImage" 
+				        placeholder="Search images">
+				    </form>
+				</div>
 			</div>
 			<ul class="nav-ul border-1 padd20" id="listView" >
-				<li ng-repeat="image in images">
-		      		{{image.name}} - <img src="{{image.src}}"></img>
+				<li ng-repeat="image in images | filter:query | orderBy: 'name'">
+		      		<div class="padd10">{{image.name}}</div><img class="preview" src="http://naramsim.github.io/Aoe2-Stratega-Uploader/img/{{image.src}}"></img>
 			    </li>
 			</ul>
 		</div>

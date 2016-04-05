@@ -106,4 +106,6 @@ function changeStrategy(id) {
 	var strCiv = document.getElementById("strCiv").textContent =text[0].civ;
 	var strAuthor = document.getElementById("strAuthor").textContent =text[0].author;
 	editor.setValue(text[0].content, 0);
+	editor.focus();
+	editor.clearSelection();
 }

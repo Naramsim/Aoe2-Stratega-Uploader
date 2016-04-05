@@ -65,3 +65,15 @@ body {
 .ovHidden {
 	overflow: hidden;
 }
+
+.preview {
+	width: 100%;
+}
+
+.inputImage {
+	width: 100%;
+}
+
+.nav-side .nav-title {
+    height: 110px;
+}

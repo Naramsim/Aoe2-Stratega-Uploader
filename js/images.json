@@ -132,14 +132,6 @@
 		"src": "church.jpg"
 	},
 	{
-		"name": "circle",
-		"src": "circle.xml"
-	},
-	{
-		"name": "circle_layer",
-		"src": "circle_layer.xml"
-	},
-	{
 		"name": "condottiero",
 		"src": "condottiero.jpg"
 	},
@@ -224,10 +216,6 @@
 		"src": "hussar.jpg"
 	},
 	{
-		"name": "ic_brightness_1_24dp",
-		"src": "ic_brightness_1_24dp.xml"
-	},
-	{
 		"name": "ic_launcher",
 		"src": "ic_launcher.png"
 	},
@@ -250,10 +238,6 @@
 	{
 		"name": "light_cavalry",
 		"src": "light_cavalry.jpg"
-	},
-	{
-		"name": "list",
-		"src": "list.txt"
 	},
 	{
 		"name": "long_swordsman",
