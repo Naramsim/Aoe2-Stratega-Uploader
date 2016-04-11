@@ -97,6 +97,7 @@ function search(what){
 
 function mines(id){
     var request = new XMLHttpRequest();
+    request.open('POST', 'localhost:3000/aoe/mine', true);
     request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
     request.onreadystatechange = function () { 
         if (request.readyState == 4 && request.status == 200) {
