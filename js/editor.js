@@ -44,7 +44,7 @@ setLocal = function (argument) {
 
 function star(id){
     var request = new XMLHttpRequest();
-    request.open('POST', 'betterbin.co/aoe/stars', true);
+    request.open('POST', 'http://betterbin.co/aoe/stars', true);
     request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
     request.onreadystatechange = function () { 
         if (request.readyState == 4 && request.status == 200) {
@@ -57,7 +57,7 @@ function star(id){
 
 function download(id){
     var request = new XMLHttpRequest();
-    request.open('POST', 'betterbin.co/aoe/download', true);
+    request.open('POST', 'http://betterbin.co/aoe/download', true);
     request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
     request.onreadystatechange = function () { 
         if (request.readyState == 4 && request.status == 200) {
@@ -70,7 +70,7 @@ function download(id){
 
 function _delete(id, xdab){
     var request = new XMLHttpRequest();
-    request.open('POST', 'betterbin.co/aoe/delete', true);
+    request.open('POST', 'http://betterbin.co/aoe/delete', true);
     request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
     request.onreadystatechange = function () { 
         if (request.readyState == 4 && request.status == 200) {
@@ -84,7 +84,7 @@ function _delete(id, xdab){
 
 function search(what){
     var request = new XMLHttpRequest();
-    request.open('POST', 'betterbin.co/aoe/search', true);
+    request.open('POST', 'http://betterbin.co/aoe/search', true);
     request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
     request.onreadystatechange = function () { 
         if (request.readyState == 4 && request.status == 200) {
@@ -93,6 +93,18 @@ function search(what){
         }
     }
     request.send(JSON.stringify({"match":what}));
+}
+
+function mines(id){
+    var request = new XMLHttpRequest();
+    request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+    request.onreadystatechange = function () { 
+        if (request.readyState == 4 && request.status == 200) {
+            var json = JSON.parse(request.responseText);
+            console.log(json);
+        }
+    }
+    request.send(JSON.stringify({"id":id}));
 }
 
 document.addEventListener('DOMContentLoaded', function () {

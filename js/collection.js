@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
     editor.setShowPrintMargin(false);
 
 	var request = new XMLHttpRequest();
-	request.open('GET', 'http://betterbin.co/aoe/last/10/0', true);
+	request.open('GET', 'http://betterbin.co/aoe/last/30/0', true);
 
 	request.onload = function() {
 	  if (request.status >= 200 && request.status < 400) {
