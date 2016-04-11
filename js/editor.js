@@ -32,16 +32,14 @@ Icon: castle
 
 var re = new RegExp("^Str@(.*)[\r\n]*^Civ:?\s?(.*)[\r\n]*^Map:?\s?(.*)[\r\n]*Name:?\s?(.*)[\r\n]*Author:?\s?(.*)[\r\n]*^Icon:\s?(.*)", "m");
 
-getCookie = function(name) {
-  var value = "; " + document.cookie;
-  var parts = value.split("; " + name + "=");
-  if (parts.length === 2) {return parts.pop().split(";").shift();}
+getLocal = function(name) {
+	return localStorage.getItem(name);
 };
 
-setCookie = function (argument) {
+setLocal = function (argument) {
     var s = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789£$&^";
     var X = Array(9).join().split(',').map(function() { return s.charAt(Math.floor(Math.random() * s.length)); }).join('');
-    document.cookie = argument + '=' + X + '; expires=Fri, 3 Aug 2100 20:47:11 UTC; path=/';
+    localStorage.setItem("XDAB", X);
 };
 
 function star(id){
@@ -98,11 +96,11 @@ function search(what){
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-
-    if(getCookie("XDAB") !== undefined){
-        var XDAB = getCookie("XDAB");
+	var XDAB;
+    if(getLocal("XDAB") !== null){
+        XDAB = getLocal("XDAB");
     }else{
-        setCookie("XDAB");
+        setLocal("XDAB");
     }
 
 	var editor = ace.edit("ace");
@@ -139,6 +137,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 to_send.name = name;
                 to_send.content = strategy_content;
                 XDAB === undefined ? XDAB = "default" : XDAB = XDAB;
+                to_send.xdab = XDAB;
                 to_send = JSON.stringify(to_send);
                 console.log(to_send);
 
@@ -158,7 +157,6 @@ document.addEventListener('DOMContentLoaded', function () {
             console.log("invalid");
             myToast.start("Invalid pattern in your strategy", "ERROR");
         }
-
         
     });
 });
