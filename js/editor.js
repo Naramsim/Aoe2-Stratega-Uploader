@@ -137,35 +137,32 @@ document.addEventListener('DOMContentLoaded', function () {
         if(match !== null ){
             title_declared = match[4].trim();
             author = match[5].trim();
-            if(title_declared !== name) {
-                console.log("titles should be equals");
-                myToast.start("Titles should be equals", "ERROR");
-            }else{
-                var to_send = {
-                    name: "",
-                    content: "",
-                    xdab: "default"
-                };
+            
+            var to_send = {
+                name: "",
+                content: "",
+                xdab: "default"
+            };
 
-                to_send.name = name;
-                to_send.content = strategy_content;
-                XDAB === undefined ? XDAB = "default" : XDAB = XDAB;
-                to_send.xdab = XDAB;
-                to_send = JSON.stringify(to_send);
-                console.log(to_send);
+            to_send.name = name;
+            to_send.content = strategy_content;
+            XDAB === undefined ? XDAB = "default" : XDAB = XDAB;
+            to_send.xdab = XDAB;
+            to_send = JSON.stringify(to_send);
+            console.log(to_send);
 
-                var request = new XMLHttpRequest();
-                request.open('POST', 'http://betterbin.co/aoe/strategies', true);
-                request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-                request.onreadystatechange = function () { 
-                    if (request.readyState == 4 && request.status == 200) {
-                        var json = JSON.parse(request.responseText);
-                        console.log(json);
-                        myToast.start("Your strategy has been uploaded", "SUCCESS");
-                    }
+            var request = new XMLHttpRequest();
+            request.open('POST', 'http://betterbin.co/aoe/strategies', true);
+            request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+            request.onreadystatechange = function () { 
+                if (request.readyState == 4 && request.status == 200) {
+                    var json = JSON.parse(request.responseText);
+                    console.log(json);
+                    myToast.start("Your strategy has been uploaded", "SUCCESS");
                 }
-                request.send(to_send);
             }
+            request.send(to_send);
+            
         }else{
             console.log("invalid");
             myToast.start("Invalid pattern in your strategy", "ERROR");
