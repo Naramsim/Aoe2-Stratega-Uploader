@@ -6,8 +6,8 @@
 	<link rel="stylesheet" type="text/css" href="http://kendo.cdn.telerik.com/2016.1.226/styles/kendo.material.min.css">
 	<link rel="stylesheet" type="text/css" href="http://kendo.cdn.telerik.com/2016.1.226/styles/kendo.common-material.min.css">
 	<link rel="stylesheet" type="text/css" media="(max-width: 720px)" href="http://kendo.cdn.telerik.com/2016.1.226/styles/kendo.material.mobile.min.css">
-	<link rel="stylesheet" type="text/css" media href="http://demos.telerik.com/kendo-ui/content/shared/styles/examples.css">
 	<link rel="stylesheet" type="text/css" href="https://rawgit.com/balde73/creativeGo/Staging/css/creativeGo.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/3.5.0/octicons.min.css">
 	<link rel="stylesheet" type="text/css" href="css/editor.css">
 	<link rel="stylesheet" href="https://rawgit.com/Naramsim/Notify/master/dist/notify.min.css">
 	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600' rel='stylesheet' type='text/css'>
@@ -15,6 +15,8 @@
 	<script src="https://rawgit.com/Naramsim/Notify/master/dist/notify.min.js"></script>
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/ace/1.2.3/noconflict/ace.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/0.7.4/purify.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
+	<script type="text/javascript" src="https://rawgit.com/balde73/creativeGo/Staging/script/creativeGo.js"></script>
 	<script src="https://code.angularjs.org/1.5.3/angular.min.js"></script>
 	<script type="text/javascript" src="js/images.js"></script>
 	<script type="text/javascript" src="js/editor.js"></script>
@@ -23,26 +25,37 @@
 	<div class="container all-height">
 		<div class="nav-side Bwhite has-nav-title">
 			<div class="nav-title Bblack">
-				<div>
-					<a href="">Images</a>
-					<form class="form-inline">
-				      <input ng-model="query" type="text" class="inputImage" 
-				        placeholder="Search images">
-				    </form>
-				</div>
+				<a href="">Aoe2 stratega</a>
 			</div>
-			<ul class="nav-ul border-1 padd20" id="listView" >
+			<div class="padd10">
+				<form class="form-inline">
+		      		<input ng-model="query" type="text" class="inputImage no-border" placeholder="Search images">
+			    </form>
+			</div>
+			<ul class="nav-ul border-1 padd20 border-bottom" id="listView" >
 				<li ng-repeat="image in images | filter:query | orderBy: 'name'">
-		      		<div class="padd10">{{image.name}}</div><img class="preview" src="http://naramsim.github.io/Aoe2-Stratega-Uploader/img/{{image.src}}"></img>
+		      		<div class="padd10">{{image.name}}</div><img class="preview" src="http://naramsim.github.io/Aoe2-Stratega-Uploader/img/{{image.src}}">
 			    </li>
 			</ul>
+			<div class="padd20 expanded">
+				<p class="paddB20 wb">How to create a new strategy</p>
+				Choose the civilization, the map, and the name of your strategy. You can choose an icon from the list above that will mark your strategy.
+				<div class="space-line space10"></div>
+				Add steps writing <kbd>-</kbd>. Write a suggestion of a step with the symbol <kbd>+</kbd>, it is useful if you want to specify something or add some shortcut.
+				You can add images to each step, just put the image name between <kbd>[ ]</kbd>.
+				<div class="space-line space10"></div>
+				Upload it online by clicking <kbd>Submit</kbd>
+			</div>
 		</div>
 		<div class="has-nav-side anchor all-height ovHidden">
-			<div class="controls">
-				<div class="demo-section k-content">
+			<div class="controls paddTB50">
+				<div class="open-nav-side padd10 split Bblack">
+					<span class="octicon octicon-three-bars"></span>
+				</div>
+				<div class="demo-section paddTB20 k-content">
 	                <ul id="fieldlist">
-	                    <li>
-	                        <input class="k-textbox" id="strategy_name" value="" placeholder="Fast Castle" />
+	                    <li class="hidden">
+	                        <input class="k-textbox" id="strategy_name" value="no-name" placeholder="Fast Castle" />
 	                    </li>
 	                    <li>
 	                        <button class="k-button k-primary button" id="submit-strategy">Submit</button>

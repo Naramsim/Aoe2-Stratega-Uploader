@@ -17,8 +17,9 @@ body {
 	position: relative;
 }
 
-.container > .editor{
-    position:fixed;
+.has-nav-side{
+	display: 		flex;
+	flex-direction: column;
 }
 
 .controls {
@@ -32,6 +33,10 @@ body {
 	text-align: center;
 }
 
+.demo-section{
+	margin: 0 auto;
+}
+
 .demo-section:not(.wide), #exampleWrap .box:not(.wide) {
     max-width: 500px;
 }
@@ -41,7 +46,6 @@ body {
 }
 
 #fieldlist > li {
-	display: inline;
 	margin: 0 2em;
 }
 
@@ -50,16 +54,17 @@ body {
 }
 
 .editor {
+	flex: 	1;
+	display: flex;
 	margin:0 auto;
 	bottom: 0;
 	width: 800px;
-	height: 80%;
 	box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.52), 0 3px 6px rgba(0, 0, 0, 0.55);
 	border-top: 20px solid #272822;
 }
 
 #ace {
-	height: 100%;
+	flex: 1;
 }
 
 .ovHidden {
@@ -74,6 +79,38 @@ body {
 	width: 100%;
 }
 
-.nav-side .nav-title {
-    height: 110px;
+kbd {
+    color: black;
+    background-color: #ECECEC;
+    padding: .2em .8em;
+    font-size: 11px;
+    border-radius: 3px;
+    margin: 0 .4em;
+}
+
+.expanded {
+	line-height: 165%;
+    letter-spacing: 1px;
+}
+
+.nav-side {
+	width: 337px;
+}
+
+.has-nav-side {
+    margin-left: 337px;
+}
+
+.nav-side-open{
+	display: flex !important;
+}
+
+ul  li.hidden{
+	display: none;
+}
+
+@media screen and (max-width: 620px){
+	.has-nav-side {
+	    margin-left: 0;
+	}
 }
